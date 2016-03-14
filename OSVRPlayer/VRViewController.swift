@@ -17,11 +17,14 @@ class VRViewController: UIViewController {
     let fileList = ["01 Jessica & Friends at Coachella.mp4", "02 EA Battlefield Hardline", "03 Laurel Dewitt NYC"]
 
     var cameraNode: SCNNode!
-    var  tubeNode: SCNNode!
+    var tubeNode: SCNNode!
     var planeNode:SCNNode!
     var scnView:SCNView!
+    var videoNode: SKVideoNode?
     var overlayScene: OverlayScene!
     var appDelegate: AppDelegate!
+    var videoPlaying: Bool = false
+    
     
     
 // utility functions for degrees to radians and vice versa
@@ -37,9 +40,11 @@ class VRViewController: UIViewController {
     
     func setCameraRotation(degrees: Float)
     {
-    self.cameraNode.rotation = SCNVector4Make(0,0,1,degreesToRadians(degrees))
+        self.tubeNode.rotation =  SCNVector4Make(0, 1, 0, degrees)
+        print("Camera Rotation:", degrees)
     
     }
+    
     
     
 // setup
@@ -66,13 +71,13 @@ class VRViewController: UIViewController {
        
         // assign singleton AVVIdeoPlayer As VideoNode within SKScene
         
-        let videoNode = SKVideoNode(AVPlayer: appDelegate.videoPlayer)
+        self.videoNode = SKVideoNode(AVPlayer: appDelegate.videoPlayer)
         let spritescene = SKScene(size: CGSize(width: videoWidth, height: videoHeight))
-        videoNode.position = CGPointMake(spritescene.size.width/2, spritescene.size.height/2)
-        videoNode.size.width = spritescene.size.width
-        videoNode.size.height = spritescene.size.height
-        videoNode.xScale = -1.0;
-        spritescene.addChild(videoNode)
+        self.videoNode!.position = CGPointMake(spritescene.size.width/2, spritescene.size.height/2)
+        self.videoNode!.size.width = spritescene.size.width
+        self.videoNode!.size.height = spritescene.size.height
+        self.videoNode!.xScale = -1.0;
+        spritescene.addChild(self.videoNode!)
         
         // assign SKScene-embedded video to tube geometry
 
@@ -91,7 +96,6 @@ class VRViewController: UIViewController {
         // create camera, add to the scene
         self.cameraNode = SCNNode()
         self.cameraNode.camera = SCNCamera()
-       // self.cameraNode.rotation.w = 551.6668
         
         cameraNode.camera?.xFov = 10
         cameraNode.camera?.yFov = 74
@@ -132,7 +136,9 @@ class VRViewController: UIViewController {
 
     func togglePlay()
     {
-        self.scnView.playing = !self.scnView.playing
+
+        
+        self.videoNode?.pause()
     }
     
    @IBAction
@@ -147,10 +153,11 @@ class VRViewController: UIViewController {
             
                 let translation = sender.translationInView(sender.view!)
                 
-                let translationConverted:Float = Float(translation.x) / 200  *  Float(M_PI_4)
+              let translationConverted:Float = Float(translation.x) / 200  *  Float(M_PI_4)
                let currentRotation = self.tubeNode.rotation.w
 
-                self.tubeNode.rotation =  SCNVector4Make(0, 1, 0, currentRotation+translationConverted)
+              //  self.tubeNode.rotation =  SCNVector4Make(0, 1, 0, currentRotation+translationConverted)
+                self.setCameraRotation(currentRotation+translationConverted)
                
                 
             sender.setTranslation(CGPointZero, inView: self.view)

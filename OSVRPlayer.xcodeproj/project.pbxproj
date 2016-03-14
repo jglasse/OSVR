@@ -11,7 +11,6 @@
 		E1B0F41E1C936489002A62E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0F41B1C936489002A62E7 /* AppDelegate.swift */; };
 		E1B0F41F1C936489002A62E7 /* OverlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0F41C1C936489002A62E7 /* OverlayScene.swift */; };
 		E1B0F4211C936497002A62E7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1B0F4201C936497002A62E7 /* Assets.xcassets */; };
-		E1B0F4231C9364A0002A62E7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1B0F4221C9364A0002A62E7 /* Info.plist */; };
 		E1B0F4251C9364DD002A62E7 /* 01 Jessica_Coachella.mov in Resources */ = {isa = PBXBuildFile; fileRef = E1B0F4241C9364DD002A62E7 /* 01 Jessica_Coachella.mov */; };
 		E1B0F4271C936600002A62E7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1B0F4261C936600002A62E7 /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -101,8 +100,8 @@
 		E150A8511BD4345100E780C6 /* OSVR */ = {
 			isa = PBXGroup;
 			children = (
-				E1B0F41A1C936489002A62E7 /* VRViewController.swift */,
 				E1B0F41B1C936489002A62E7 /* AppDelegate.swift */,
+				E1B0F41A1C936489002A62E7 /* VRViewController.swift */,
 				E1B0F41C1C936489002A62E7 /* OverlayScene.swift */,
 				E11656D41C0EF5CB00724D07 /* Movies */,
 				E1B0F4201C936497002A62E7 /* Assets.xcassets */,
@@ -174,7 +173,7 @@
 		E150A8471BD4345100E780C6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Jeffery Glasse";
 				TargetAttributes = {
 					E150A84E1BD4345100E780C6 = {
@@ -217,7 +216,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1B0F4251C9364DD002A62E7 /* 01 Jessica_Coachella.mov in Resources */,
-				E1B0F4231C9364A0002A62E7 /* Info.plist in Resources */,
 				E1B0F4211C936497002A62E7 /* Assets.xcassets in Resources */,
 				E1B0F4271C936600002A62E7 /* Main.storyboard in Resources */,
 			);
@@ -370,7 +368,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/OSVRPlayer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kogeto.LookerVRPlayer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kogeto.OSVRPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -385,7 +383,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/OSVRPlayer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.kogeto.LookerVRPlayer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kogeto.OSVRPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

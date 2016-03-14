@@ -22,3 +22,6 @@ added.
 
 This initial build features content captured with the Kogeto Jo camera at 3840x720
 resolution. 
+
+Still to be implemented:
+Properly synchronize

@@ -17,7 +17,7 @@ class OverlayScene: SKScene {
     let cropNode = SKCropNode()
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let togglePlayNotificationKey = "com.kogeto.togglePlayNotificationKey"
-    var owner:UIViewController?
+    var owner:VRViewController?
     
     
     
@@ -29,31 +29,41 @@ class OverlayScene: SKScene {
         
         if self.pauseNode.containsPoint(location) {
             
-            NSNotificationCenter.defaultCenter().postNotificationName(togglePlayNotificationKey, object: self)
+           self.togglePlay()
 
             
-            if  (self.pauseNode.text == "PLAY") {
-                self.pauseNode.text = "PAUSE"
-                
-                print("playing")
-                print(appDelegate.videoPlayer.rate)
-                
-            }
-            else {
-                self.pauseNode.text =  "PLAY"
-                self.appDelegate.videoPlayer.pause()
-                print("paused")
-                print(appDelegate.videoPlayer.rate)
-
-
-            }
             
         }
     }
     
     func togglePlay() {
-        NSNotificationCenter.defaultCenter().postNotificationName(togglePlayNotificationKey, object: self)}
-        
+       // NSNotificationCenter.defaultCenter().postNotificationName(togglePlayNotificationKey, object: self)
+        if  (self.pauseNode.text == "PLAY") {
+            self.pauseNode.text = "PAUSE"
+            self.owner?.videoNode?.play()
+            //appDelegate.videoPlayer.play()
+            print("playing")
+            print(appDelegate.videoPlayer.rate)
+            self.owner?.videoPlaying = true
+
+            
+        }
+        else {
+            self.pauseNode.text =  "PLAY"
+            self.appDelegate.videoPlayer.pause()
+            self.owner?.videoNode?.pause()
+            print("paused")
+            print(appDelegate.videoPlayer.rate)
+            self.owner?.videoPlaying = false
+
+            
+            
+        }
+
+    
+    
+    }
+    
         
     
     override init(size: CGSize) {
@@ -80,7 +90,7 @@ class OverlayScene: SKScene {
     // create indicator Node
         
         self.indicatorNode.alpha = 0.45
-        self.indicatorNode.position = CGPointMake(self.size.width/2, self.size.height/4+7)
+        self.indicatorNode.position = CGPointMake(self.size.width/2+160, self.size.height/4+7)
 
         
     // create mask for indicatorNode
