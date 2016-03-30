@@ -14,16 +14,17 @@ import AVFoundation  // for video playback engine
 
 class VRViewController: UIViewController {
     
-    let fileList = ["01 Jessica & Friends at Coachella.mp4", "02 EA Battlefield Hardline", "03 Laurel Dewitt NYC"]
-
     var cameraNode: SCNNode!
     var tubeNode: SCNNode!
     var planeNode:SCNNode!
     var scnView:SCNView!
-    var videoNode: SKVideoNode?
     var overlayScene: OverlayScene!
     var appDelegate: AppDelegate!
-    var videoPlaying: Bool = false
+    var videoNode: SKVideoNode?
+    var cameraAngleX : Float?
+    var cameraAngleY : Float?
+    var videoPlaying = false
+
     
     
     
@@ -153,7 +154,7 @@ class VRViewController: UIViewController {
             
                 let translation = sender.translationInView(sender.view!)
                 
-              let translationConverted:Float = Float(translation.x) / 200  *  Float(M_PI_4)
+              let translationConverted:Float = Float(translation.x) / 100  *  Float(M_PI_4)
                let currentRotation = self.tubeNode.rotation.w
 
               //  self.tubeNode.rotation =  SCNVector4Make(0, 1, 0, currentRotation+translationConverted)
@@ -168,8 +169,8 @@ class VRViewController: UIViewController {
                 
                 if (self.overlayScene.indicatorNode.position.x > 580) { self.overlayScene.indicatorNode.position.x = 100}
                 
-                self.overlayScene.indicatorNode.position = CGPoint(x: overlayScene.indicatorNode.position.x-translation.x/3, y: self.overlayScene.indicatorNode.position.y)
-                
+                self.overlayScene.indicatorNode.position.x = overlayScene.indicatorNode.position.x-translation.x/1.6
+            
 
             
             default:

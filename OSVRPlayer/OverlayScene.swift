@@ -37,27 +37,21 @@ class OverlayScene: SKScene {
     }
     
     func togglePlay() {
-       // NSNotificationCenter.defaultCenter().postNotificationName(togglePlayNotificationKey, object: self)
-        if  (self.pauseNode.text == "PLAY") {
-            self.pauseNode.text = "PAUSE"
-            self.owner?.videoNode?.play()
-            //appDelegate.videoPlayer.play()
-            print("playing")
-            print(appDelegate.videoPlayer.rate)
-            self.owner?.videoPlaying = true
-
-            
-        }
-        else {
+        if  (self.owner!.videoPlaying) {
             self.pauseNode.text =  "PLAY"
-            self.appDelegate.videoPlayer.pause()
             self.owner?.videoNode?.pause()
             print("paused")
             print(appDelegate.videoPlayer.rate)
             self.owner?.videoPlaying = false
-
             
-            
+        }
+        else {
+            self.pauseNode.text = "PAUSE"
+            self.owner?.videoNode?.play()
+            print("playing")
+            print(appDelegate.videoPlayer.rate)
+            self.owner?.videoPlaying = true
+          
         }
 
     
@@ -65,6 +59,14 @@ class OverlayScene: SKScene {
     }
     
         
+    func hideUI() {
+    
+    
+    
+    
+    }
+    
+    
     
     override init(size: CGSize) {
         super.init(size: size)
