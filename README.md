@@ -4,7 +4,6 @@ OSVR
 Version 0.2 - Fri 30 Mar 2016
 
 by Jeff Glasse  
-<http://kogeto.com/>
 
 
 Introduction
