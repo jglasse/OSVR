@@ -4,7 +4,6 @@ OSVR
 Version 0.2 - Fri 30 Mar 2016
 
 by Jeff Glasse  
-<http://kogeto.com/>
 
 
 Introduction
@@ -23,5 +22,3 @@ added.
 This initial build features content captured with the Kogeto Jo camera at 3840x720
 resolution. 
 
-Still to be implemented:
-Properly synchronize
