@@ -2,7 +2,7 @@
 //  VRViewController.swift
 //
 //  Created by Jeffery Glasse on 10/1/15.
-//  Copyright (c) 2015 Kogeto, Inc. All rights reserved.
+//  Copyright © 2016 Jeffery Glasse. All rights reserved.
 //
 
 import UIKit
@@ -30,20 +30,29 @@ class VRViewController: UIViewController {
     
 // utility functions for degrees to radians and vice versa
     
-    func degreesToRadians(degrees: Float) -> Float {
+    func degreesToRadians(_ degrees: Float) -> Float {
         return (degrees * Float(M_PI)) / 180.0
     }
     
-    func radiansToDegrees(radians: Float) -> Float {
-        return (180.0/Float(M_PI)) * radians
+    func radiansToDegrees(_ radians: Float) -> Float {
+     var tempdegrees = (180.0/Float(M_PI)) * radians
+        
+        
+        if  tempdegrees > 360 {tempdegrees = tempdegrees-360}
+        else if tempdegrees < 0 {tempdegrees = tempdegrees+360}
+
+        return tempdegrees
     }
 
     
-    func setCameraRotation(degrees: Float)
+    func setCameraRotation(_ radians: Float)
     {
-        self.tubeNode.rotation =  SCNVector4Make(0, 1, 0, degrees)
-        print("Camera Rotation:", degrees)
-    
+        self.tubeNode.rotation =  SCNVector4Make(0, 1, 0, radians)
+        let degrees = round(radiansToDegrees(radians))
+        
+        self.overlayScene.orientationIndicatorNode.text = "\(degrees)°"
+        print("Camera Rotation (radians):", radians)
+        print("Camera Rotation (degrees):", radiansToDegrees(radians))
     }
     
     
@@ -53,9 +62,9 @@ class VRViewController: UIViewController {
         let togglePlayNotificationKey = "com.kogeto.togglePlayNotificationKey"
         let videoWidth = 3840
         let videoHeight = 720
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "togglePlay", name: togglePlayNotificationKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(VRViewController.togglePlay), name: NSNotification.Name(rawValue: togglePlayNotificationKey), object: nil)
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
         super.viewDidLoad()
         
@@ -71,17 +80,15 @@ class VRViewController: UIViewController {
 
        
         // assign singleton AVVIdeoPlayer As VideoNode within SKScene
-        
-        self.videoNode = SKVideoNode(AVPlayer: appDelegate.videoPlayer)
+        self.videoNode = SKVideoNode(avPlayer: appDelegate.videoPlayer)
         let spritescene = SKScene(size: CGSize(width: videoWidth, height: videoHeight))
-        self.videoNode!.position = CGPointMake(spritescene.size.width/2, spritescene.size.height/2)
+        self.videoNode!.position = CGPoint(x: spritescene.size.width/2, y: spritescene.size.height/2)
         self.videoNode!.size.width = spritescene.size.width
         self.videoNode!.size.height = spritescene.size.height
         self.videoNode!.xScale = -1.0;
         spritescene.addChild(self.videoNode!)
         
         // assign SKScene-embedded video to tube geometry
-
         tube.firstMaterial?.diffuse.contents  = spritescene
         
         
@@ -104,6 +111,7 @@ class VRViewController: UIViewController {
         
         // place the camera
          self.cameraNode.position = SCNVector3(x: 0, y: 0, z: 0)
+        
          self.cameraNode.rotation = SCNVector4Make(0,0,1,degreesToRadians(180))
 
         
@@ -121,8 +129,8 @@ class VRViewController: UIViewController {
         self.scnView.showsStatistics = false
         
         // configure the view and start playing
-        self.scnView.backgroundColor = UIColor.blackColor()
-        self.scnView.playing = true
+        self.scnView.backgroundColor = UIColor.black
+        self.scnView.isPlaying = true
         
         //create overlay
         
@@ -137,31 +145,28 @@ class VRViewController: UIViewController {
 
     func togglePlay()
     {
-
-        
         self.videoNode?.pause()
     }
     
    @IBAction
-    func handlePan(sender: UIPanGestureRecognizer)
+    func handlePan(_ sender: UIPanGestureRecognizer)
         {
             switch(sender.state) {
             
-            case .Ended:
+            case .ended:
                 fallthrough
                 
-            case .Changed:
+            case .changed:
             
-                let translation = sender.translationInView(sender.view!)
+                let translation = sender.translation(in: sender.view!)
                 
               let translationConverted:Float = Float(translation.x) / 100  *  Float(M_PI_4)
                let currentRotation = self.tubeNode.rotation.w
-
-              //  self.tubeNode.rotation =  SCNVector4Make(0, 1, 0, currentRotation+translationConverted)
+                
                 self.setCameraRotation(currentRotation+translationConverted)
                
                 
-            sender.setTranslation(CGPointZero, inView: self.view)
+            sender.setTranslation(CGPoint.zero, in: self.view)
 
                 if (self.overlayScene.indicatorNode.position.x < 100) {
                     self.overlayScene.indicatorNode.position.x = 580}
@@ -181,26 +186,10 @@ class VRViewController: UIViewController {
     }
     
 
+    
        
-    func renderer(aRenderer: SCNSceneRenderer!, updateAtTime time: NSTimeInterval) {
-    }
-    
-    
-    override func shouldAutorotate() -> Bool {
-        return true
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-            return .All
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
     }
 
     

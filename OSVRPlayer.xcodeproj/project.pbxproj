@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E17026041CF40E340010D279 /* VR_Movie_Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17026031CF40E340010D279 /* VR_Movie_Object.swift */; };
 		E1B0F41D1C936489002A62E7 /* VRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0F41A1C936489002A62E7 /* VRViewController.swift */; };
 		E1B0F41E1C936489002A62E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0F41B1C936489002A62E7 /* AppDelegate.swift */; };
 		E1B0F41F1C936489002A62E7 /* OverlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0F41C1C936489002A62E7 /* OverlayScene.swift */; };
@@ -36,6 +37,7 @@
 		E150A84F1BD4345100E780C6 /* LookerVRPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LookerVRPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E150A8651BD4345100E780C6 /* LookerVRPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LookerVRPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E150A8701BD4345100E780C6 /* LookerVRPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LookerVRPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E17026031CF40E340010D279 /* VR_Movie_Object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VR_Movie_Object.swift; sourceTree = SOURCE_ROOT; };
 		E1B0F41A1C936489002A62E7 /* VRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VRViewController.swift; path = OSVRPlayer/VRViewController.swift; sourceTree = SOURCE_ROOT; };
 		E1B0F41B1C936489002A62E7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = OSVRPlayer/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		E1B0F41C1C936489002A62E7 /* OverlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OverlayScene.swift; path = OSVRPlayer/OverlayScene.swift; sourceTree = SOURCE_ROOT; };
@@ -102,6 +104,7 @@
 			children = (
 				E1B0F41B1C936489002A62E7 /* AppDelegate.swift */,
 				E1B0F41A1C936489002A62E7 /* VRViewController.swift */,
+				E17026031CF40E340010D279 /* VR_Movie_Object.swift */,
 				E1B0F41C1C936489002A62E7 /* OverlayScene.swift */,
 				E11656D41C0EF5CB00724D07 /* Movies */,
 				E1B0F4201C936497002A62E7 /* Assets.xcassets */,
@@ -173,12 +176,13 @@
 		E150A8471BD4345100E780C6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Jeffery Glasse";
 				TargetAttributes = {
 					E150A84E1BD4345100E780C6 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = WPGAGSXUST;
+						LastSwiftMigration = 0800;
 					};
 					E150A8641BD4345100E780C6 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -243,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1B0F41D1C936489002A62E7 /* VRViewController.swift in Sources */,
+				E17026041CF40E340010D279 /* VR_Movie_Object.swift in Sources */,
 				E1B0F41E1C936489002A62E7 /* AppDelegate.swift in Sources */,
 				E1B0F41F1C936489002A62E7 /* OverlayScene.swift in Sources */,
 			);
@@ -295,6 +300,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -316,7 +322,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -339,6 +345,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -371,6 +378,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kogeto.OSVRPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -386,6 +394,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kogeto.OSVRPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
