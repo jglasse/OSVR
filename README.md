@@ -1,7 +1,7 @@
 OSVR
 ========
 
-Version 0.2 - Fri 30 Mar 2016
+Version 0.3 - October 30 2016
 
 by Jeff Glasse  
 
@@ -21,4 +21,8 @@ added.
 
 This initial build features content captured with the Kogeto Jo camera at 3840x720
 resolution. 
+  
+
+October 2016 update brings Xcode 8/swift 3 compatibility.
+
 
