@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E14CEFA71F254491002CEE36 /* NY360_E2.mov in Resources */ = {isa = PBXBuildFile; fileRef = E14CEFA61F2542F3002CEE36 /* NY360_E2.mov */; };
 		E17026041CF40E340010D279 /* VR_Movie_Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17026031CF40E340010D279 /* VR_Movie_Object.swift */; };
 		E1B0F41D1C936489002A62E7 /* VRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0F41A1C936489002A62E7 /* VRViewController.swift */; };
 		E1B0F41E1C936489002A62E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B0F41B1C936489002A62E7 /* AppDelegate.swift */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E14CEFA61F2542F3002CEE36 /* NY360_E2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = NY360_E2.mov; sourceTree = SOURCE_ROOT; };
 		E150A84F1BD4345100E780C6 /* LookerVRPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LookerVRPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E150A8651BD4345100E780C6 /* LookerVRPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LookerVRPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E150A8701BD4345100E780C6 /* LookerVRPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LookerVRPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				E1B0F4241C9364DD002A62E7 /* 01 Jessica_Coachella.mov */,
+				E14CEFA61F2542F3002CEE36 /* NY360_E2.mov */,
 			);
 			name = Movies;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			files = (
 				E1B0F4251C9364DD002A62E7 /* 01 Jessica_Coachella.mov in Resources */,
 				E1B0F4211C936497002A62E7 /* Assets.xcassets in Resources */,
+				E14CEFA71F254491002CEE36 /* NY360_E2.mov in Resources */,
 				E1B0F4271C936600002A62E7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

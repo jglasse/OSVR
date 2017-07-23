@@ -89,7 +89,7 @@ class OverlayScene: SKScene {
         
     // create indicator Node
         
-        self.indicatorNode.alpha = 0.45
+        self.indicatorNode.alpha = 0.55
         self.indicatorNode.position = CGPoint(x: self.size.width/2+160, y: self.size.height/4+7)
 
         

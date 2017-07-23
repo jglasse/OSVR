@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         
-        let videoList = ["01 Jessica_Coachella","02 Battlefield Hardline", "03 Laurel Dewitt NYC"]
+        let videoList = ["01 Jessica_Coachella","NY360_E2", "03 Laurel Dewitt NYC"]
         
-        let currentVideo = videoList[0]
+        let currentVideo = videoList[1]
         
         let urlStr = Bundle.main.path(forResource: currentVideo, ofType: "mov")
         let url = URL(fileURLWithPath: urlStr!)

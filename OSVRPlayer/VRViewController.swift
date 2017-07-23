@@ -31,11 +31,11 @@ class VRViewController: UIViewController {
 // utility functions for degrees to radians and vice versa
     
     func degreesToRadians(_ degrees: Float) -> Float {
-        return (degrees * Float(M_PI)) / 180.0
+        return (degrees * Float.pi) / 180.0
     }
     
     func radiansToDegrees(_ radians: Float) -> Float {
-     var tempdegrees = (180.0/Float(M_PI)) * radians
+     var tempdegrees = (180.0/Float.pi) * radians
         
         
         if  tempdegrees > 360 {tempdegrees = tempdegrees-360}
@@ -160,7 +160,7 @@ class VRViewController: UIViewController {
             
                 let translation = sender.translation(in: sender.view!)
                 
-              let translationConverted:Float = Float(translation.x) / 100  *  Float(M_PI_4)
+              let translationConverted:Float = Float(translation.x) / 100  *  Float.pi
                let currentRotation = self.tubeNode.rotation.w
                 
                 self.setCameraRotation(currentRotation+translationConverted)
